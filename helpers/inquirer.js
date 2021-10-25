@@ -4,7 +4,8 @@ const {
   pausaOpt,
   preguntas,
   questions,
-  optDeleteTarea
+  optDeleteTarea,
+  confirmOpts
 } = require('../types/inquirerOpts')
 
 const inquirerMenu = async () => {
@@ -36,14 +37,25 @@ const listadoTareasBorrar = async (tareas = []) => {
       name: `${idx} ${tarea.desc}`
     }
   })
+  choices.unshift({
+    value: '0',
+    name: '0.'.green + ' Cancelar'
+  })
   optDeleteTarea[0].choices = choices;
   const { id } = await inquirer.prompt(optDeleteTarea);
   return id;
+}
+
+const confirmar = async (message) => {
+  confirmOpts[0].message = message
+  const { ok } = await inquirer.prompt(confirmOpts);
+  return ok
 }
 
 module.exports = {
   inquirerMenu,
   pausa,
   leerInput,
-  listadoTareasBorrar
+  listadoTareasBorrar,
+  confirmar
 }

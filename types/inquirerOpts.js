@@ -70,10 +70,21 @@ const optDeleteTarea = [
   }
 ]
 
+const confirmOpts = [
+  {
+    type: 'confirm',
+    name: 'ok',
+    message: ''
+  }
+]
+
+
+
 
 module.exports = {
   pausaOpt,
   preguntas,
   questions,
-  optDeleteTarea
+  optDeleteTarea,
+  confirmOpts
 }
