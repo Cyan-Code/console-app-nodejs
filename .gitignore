@@ -1,7 +1,7 @@
 /node_modules
 /.pnp
 .pnp.js
-/db
+db/*.json
 
 # testing
 /coverage

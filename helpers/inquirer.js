@@ -3,7 +3,8 @@ require('colors');
 const {
   pausaOpt,
   preguntas,
-  questions
+  questions,
+  optDeleteTarea
 } = require('../types/inquirerOpts')
 
 const inquirerMenu = async () => {
@@ -27,8 +28,22 @@ const leerInput = async (mensaje) => {
   return desc;
 }
 
+const listadoTareasBorrar = async (tareas = []) => {
+  const choices = tareas.map( (tarea, i) => {
+    const idx = `${i+=1}`.green;
+    return {
+      value: tarea.id,
+      name: `${idx} ${tarea.desc}`
+    }
+  })
+  optDeleteTarea[0].choices = choices;
+  const { id } = await inquirer.prompt(optDeleteTarea);
+  return id;
+}
+
 module.exports = {
   inquirerMenu,
   pausa,
-  leerInput
+  leerInput,
+  listadoTareasBorrar
 }

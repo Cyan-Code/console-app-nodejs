@@ -61,10 +61,19 @@ const questions = [
   }
 ]
 
+const optDeleteTarea = [
+  {
+    type: 'list',
+    name: 'id',
+    message: 'Borrar',
+    choices: []
+  }
+]
 
 
 module.exports = {
   pausaOpt,
   preguntas,
-  questions
+  questions,
+  optDeleteTarea
 }
