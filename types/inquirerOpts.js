@@ -70,6 +70,15 @@ const optDeleteTarea = [
   }
 ]
 
+const optCompletedTasks = [
+  {
+    type: 'checkbox',
+    name: 'ids',
+    message: 'Seleccione ->',
+    choices: []
+  }
+]
+
 const confirmOpts = [
   {
     type: 'confirm',
@@ -86,5 +95,6 @@ module.exports = {
   preguntas,
   questions,
   optDeleteTarea,
-  confirmOpts
+  confirmOpts,
+  optCompletedTasks
 }

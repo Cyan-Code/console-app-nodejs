@@ -42,8 +42,8 @@ class Tareas {
     this.listadoArr.forEach(({desc, completadoEn}, idx) => {
       const i = `${idx+1}.`.green;
       const estado = (completadoEn)
-                     ? 'Completada'.green
-                     : 'Pendiente'.red
+                     ? `${completadoEn}`.green
+                     : `${completadoEn}`.red
       console.log(`${i} ${desc} :: ${estado}`);
     })
   }
@@ -55,7 +55,7 @@ class Tareas {
       if (completadas) {
         if (completadoEn) {
           index ++;
-          console.log(`${(index.toString()+'.').green} ${desc} :: ${'Completada'.green}`)
+          console.log(`${(index.toString()+'.').green} ${desc} :: ${(completadoEn).green}`)
         }
       } else {
         if (completadoEn === null) {
@@ -64,6 +64,21 @@ class Tareas {
         }
       }
     })
+  }
+
+  toggleCompletadas(ids = []) {
+    ids.forEach(id => {
+      const tarea = this._listado[id];
+      if (!tarea.completadoEn) {
+        tarea.completadoEn = new Date().toISOString()
+      }
+    });
+    this.listadoArr.forEach( tarea => {
+      if (!ids.includes(tarea.id)) {
+        this._listado[tarea.id].completadoEn = null;
+      }
+    });
+
   }
 
 }
